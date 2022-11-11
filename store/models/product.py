@@ -1,3 +1,5 @@
+from email.policy import default
+from tabnanny import verbose
 from django.db import models
 from .category import Category
 class Products(models.Model):
@@ -5,6 +7,7 @@ class Products(models.Model):
     price= models.IntegerField(default=0)
     category= models.ForeignKey(Category,on_delete=models.CASCADE,default=1 )
     description= models.CharField(max_length=250, default='', blank=True, null= True)
+    stock = models.IntegerField(default=0, verbose_name='Stock')
     image= models.ImageField(upload_to='uploads/products/')
 
     @staticmethod
